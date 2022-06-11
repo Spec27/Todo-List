@@ -1,0 +1,32 @@
+.TodoEditor{
+    width: 560px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin-left: 40px;
+   margin-top: 40px;
+   padding: 20px;
+ 
+  
+   
+}
+.Textarea{
+    width: 550px;
+    height: 100px;
+    margin-right: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    list-style: none;
+    resize: none;
+}
+
+.EditorBtn{
+    width: 550px;
+    height: 40px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgb(0, 132, 255);
+    color: aliceblue;
+    border-style: none;
+}
