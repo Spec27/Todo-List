@@ -4,14 +4,30 @@ import TodoList from './components/TodoList';
 import TodoEditor from './components/TodoEdior';
 import todos from './todos.json';
 import shortid from 'shortid';
-
 import Filter from './components/FilterTodos';
+import Modal from 'components/Modal';
 
 class App extends Component {
   state = {
     todos: todos,
     filter: '',
+    showModal: false,
   };
+
+  componentDidMount() {
+    const tod = localStorage.getItem('todos');
+    const parsedTodos = JSON.parse(tod);
+
+    if (parsedTodos) {
+      this.setState({ todos: parsedTodos });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.todos !== prevState.todos) {
+      localStorage.setItem('todos', JSON.stringify(this.state.todos));
+    }
+  }
 
   addTodo = text => {
     console.log(text);
@@ -62,14 +78,35 @@ class App extends Component {
     );
   };
 
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
+  };
+
   render() {
-    const { todos, filter } = this.state;
+    const { todos, filter, showModal } = this.state;
     const totalTodoCount = todos.length;
     const completedTodosCount = this.calculateTodosCount();
     const visibleTodo = this.getVisibleTodos();
 
     return (
       <>
+        <button type="button" onClick={this.toggleModal}>
+          Open Modal
+        </button>
+        <div onClose={this.toggleModal}>
+          {showModal && (
+            <Modal onClose={this.toggleModal}>
+              <h1>Component modal</h1>
+              <p></p>
+              <button type="button" onClick={this.toggleModal}>
+                Close Modal
+              </button>
+            </Modal>
+          )}
+        </div>
+
         <Filter value={filter} onChange={this.changeFilter} />
         <TodoEditor onSubmit={this.addTodo} />
         <div className="Counter">
