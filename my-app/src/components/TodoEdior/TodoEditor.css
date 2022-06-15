@@ -1,5 +1,5 @@
 .TodoEditor{
-    width: 560px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     border: 1px solid black;
@@ -11,7 +11,7 @@
    
 }
 .Textarea{
-    width: 550px;
+    width: 400px;
     height: 100px;
     margin-right: 10px;
     border-radius: 5px;
@@ -21,7 +21,7 @@
 }
 
 .EditorBtn{
-    width: 550px;
+    width: 400px;
     height: 40px;
     padding: 5px;
     border-radius: 5px;

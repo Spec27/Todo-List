@@ -6,6 +6,7 @@ import todos from './todos.json';
 import shortid from 'shortid';
 import Filter from './components/FilterTodos';
 import Modal from 'components/Modal';
+import Clock from 'components/Clock';
 
 class App extends Component {
   state = {
@@ -30,15 +31,19 @@ class App extends Component {
   }
 
   addTodo = text => {
-    console.log(text);
     const todo = {
       id: shortid.generate(),
       text,
       completed: false,
     };
+    if (todo.text === '') {
+      alert('Добавте Завдання');
+      return;
+    }
     this.setState(prevState => ({
       todos: [todo, ...prevState.todos],
     }));
+    this.toggleModal();
   };
 
   deleteTodo = todoId => {
@@ -51,7 +56,6 @@ class App extends Component {
     this.setState(prevState => ({
       todos: prevState.todos.map(todo => {
         if (todo.id === todoId) {
-          console.log('знайшли потрібну тудушку');
           return { ...todo, completed: !todo.completed };
         }
         return todo;
@@ -92,32 +96,38 @@ class App extends Component {
 
     return (
       <>
-        <button type="button" onClick={this.toggleModal}>
-          Open Modal
-        </button>
-        <div onClose={this.toggleModal}>
-          {showModal && (
-            <Modal onClose={this.toggleModal}>
-              <h1>Component modal</h1>
-              <p></p>
-              <button type="button" onClick={this.toggleModal}>
-                Close Modal
-              </button>
-            </Modal>
-          )}
+        <div className="Conainer">
+          <Clock />
+          <div className="ContainerBtn">
+            <button
+              className="OpenTodoEditor"
+              type="button"
+              onClick={this.toggleModal}
+            >
+              Додати завдання
+            </button>
+          </div>
+          <div onClose={this.toggleModal}>
+            {showModal && (
+              <Modal onClose={this.toggleModal}>
+                <TodoEditor onSubmit={this.addTodo} />
+                <button type="button" onClick={this.toggleModal}>
+                  Close Modal
+                </button>
+              </Modal>
+            )}
+          </div>
+          <Filter value={filter} onChange={this.changeFilter} />
+          <div className="Counter">
+            <p>Загальна Кількість цілей: {totalTodoCount}</p>
+            <p> Кількість виконаних: {completedTodosCount}</p>
+          </div>
+          <TodoList
+            todos={visibleTodo}
+            onDeleteTodo={this.deleteTodo}
+            onTogleCompleted={this.toggleComplited}
+          />
         </div>
-
-        <Filter value={filter} onChange={this.changeFilter} />
-        <TodoEditor onSubmit={this.addTodo} />
-        <div className="Counter">
-          <p>Загальна Кількість цілей: {totalTodoCount}</p>
-          <p> Кількість виконаних: {completedTodosCount}</p>
-        </div>
-        <TodoList
-          todos={visibleTodo}
-          onDeleteTodo={this.deleteTodo}
-          onTogleCompleted={this.toggleComplited}
-        />
       </>
     );
   }

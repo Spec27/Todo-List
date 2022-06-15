@@ -13,21 +13,26 @@ class Modal extends Component{
 
 
     componentWillUnmount() { 
-        console.log("Modal componentDidUpdate")
         window.removeEventListener('keydown',this.hendleKeyDown)
     };
 
 
     hendleKeyDown = e => {
         if (e.code === 'Escape') {
-            console.log("нажали в ескейп потрібно закрити модалку",);
             this.props.onClose();
         }
     };
 
+    hendleBackdropClick = e => {
+        if (e.currentTarget === e.target) {
+            this.props.onClose();
+        }
+        
+    }
+
     render () {
         return createPortal (
-            <div className={s.ModalBackdrop}>
+            <div className={s.ModalBackdrop} onClick={this.hendleBackdropClick}>
                 <div className={s.ModalContent}>{this.props.children}</div>
             </div>,modalRoot,
         );

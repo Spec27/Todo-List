@@ -36,6 +36,36 @@
     transform: rotate(360deg);
   }
 }
+.Conainer{
+
+  background-image: radial-gradient(circle, rgba(82, 57, 67, 0.342) 0%, rgba(47, 136, 226, 0.164) 100%), url("./Img/chashka_kofe_knigi_156306_2048x1152.jpg");
+  
+  height: 100vh;
+}
 .Counter{
   padding-left: 40px;
+}
+
+.ContainerBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.OpenTodoEditor{
+  width: 200px;
+  height: 35px;
+  margin-top: 20px;
+  border-radius: 5px;
+  color: white;
+  background-color: rgba(49, 49, 49, 0.233);
+  cursor: pointer;
+  border-style: none;
+ transition: transform 1000ms cubic-bezier(0.075, 0.82, 0.165, 1), 
+ background-color 1000ms cubic-bezier(0.39, 0.575, 0.565, 1);
+ box-shadow: 3px 3px 6px 1px rgba(255, 255, 255, 0.534);
+}
+
+.OpenTodoEditor:hover{
+  background-color: rgba(15, 15, 13, 0.541);
+  transform: scale(1.2);
 }
