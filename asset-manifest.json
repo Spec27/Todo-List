@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/Todo-List/static/css/main.b9dd11d7.css",
-    "main.js": "/Todo-List/static/js/main.047c3f96.js",
+    "main.css": "/Todo-List/static/css/main.e1e7b9ec.css",
+    "main.js": "/Todo-List/static/js/main.ac9b78ad.js",
     "static/js/787.28cb0dcd.chunk.js": "/Todo-List/static/js/787.28cb0dcd.chunk.js",
+    "static/media/chashka_kofe_knigi_156306_2048x1152.jpg": "/Todo-List/static/media/chashka_kofe_knigi_156306_2048x1152.756f61c52eda3061631c.jpg",
     "index.html": "/Todo-List/index.html",
-    "main.b9dd11d7.css.map": "/Todo-List/static/css/main.b9dd11d7.css.map",
-    "main.047c3f96.js.map": "/Todo-List/static/js/main.047c3f96.js.map",
+    "main.e1e7b9ec.css.map": "/Todo-List/static/css/main.e1e7b9ec.css.map",
+    "main.ac9b78ad.js.map": "/Todo-List/static/js/main.ac9b78ad.js.map",
     "787.28cb0dcd.chunk.js.map": "/Todo-List/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b9dd11d7.css",
-    "static/js/main.047c3f96.js"
+    "static/css/main.e1e7b9ec.css",
+    "static/js/main.ac9b78ad.js"
   ]
 }
